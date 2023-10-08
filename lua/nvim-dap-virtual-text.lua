@@ -118,6 +118,12 @@ function M.enable()
   M.refresh()
 end
 
+function M.exit()
+  local virtual_text = require 'nvim-dap-virtual-text/virtual_text'
+  virtual_text.clear_virtual_text()
+  virtual_text.clear_last_frames()
+end
+
 function M.toggle()
   options.enabled = not options.enabled
   M.refresh()
@@ -146,6 +152,7 @@ function M.setup(opts)
     command! DapVirtualTextDisable :lua require'nvim-dap-virtual-text'.disable()
     command! DapVirtualTextToggle :lua require'nvim-dap-virtual-text'.toggle()
     command! DapVirtualTextForceRefresh :lua require'nvim-dap-virtual-text'.refresh()
+    command! DapVirtualTextExit :lua require'nvim-dap-virtual-text'.exit()
     ]]
   end
 
